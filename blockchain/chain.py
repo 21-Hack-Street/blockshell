@@ -26,10 +26,14 @@ class Block:
     """
         Create a new block in chain with metadata
     """
-    def __init__(self, data, index=0):
+    def __init__(self, _uuid, _email, _nom, _prenom, _image, index=0):
         self.index = index
         self.previousHash = ""
-        self.data = data
+        self.uuid = _uuid
+        self.email = _email
+        self.nom = _nom
+        self.prenom = _prenom
+        self.image = _image
         self.timestamp = str(datetime.datetime.now())
         self.nonce = 0
         self.hash = self.calculateHash()
@@ -38,7 +42,7 @@ class Block:
         """
             Method to calculate hash from metadata
         """
-        hashData = str(self.index) + str(self.data) + self.timestamp + self.previousHash + str(self.nonce)
+        hashData = str(self.index) + str(self.uuid) + str(self.email) + str(self.nom) + str(self.prenom) + str(self.image) + self.timestamp + self.previousHash + str(self.nonce)
         return hashlib.sha256(hashData).hexdigest()
 
     def mineBlock(self, difficulty):

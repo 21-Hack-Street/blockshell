@@ -89,11 +89,12 @@ def dotx(cmd):
     """
         Do Transaction - Method to perform new transaction on blockchain.
     """
-    txData = cmd.split("dotx ")[-1]
-    if "{" in txData:
-        txData = json.loads(txData)
+    args = cmd.split("dotx ")
+    if (args.len() != 5):
+        print("not or too many args")
+        return
     print "Doing transaction..."
-    coin.addBlock(Block(data=txData))
+    coin.addBlock(Block(args[0], args[1], args[2], arg[3], args[4]))
 
 def allblocks(cmd):
     """
@@ -120,7 +121,7 @@ def help(cmd):
         Method to display supported commands in Blockshell
     """
     print "Commands:"
-    print "   dotx <transaction data>    Create new transaction"
+    print "   dotx <uuid> <email> <nom> <prenom> <image> Create new transaction"
     print "   allblocks                  Fetch all mined blocks in blockchain"
     print "   getblock <block hash>      Fetch information about particular block"
 

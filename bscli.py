@@ -16,6 +16,9 @@ import click
 import urllib
 import json
 from blockchain.chain import Block, Blockchain
+import csv
+import base64
+import requests
 
 # ==================================================
 # ===== SUPPORTED COMMANDS LIST IN BLOCKSHELL ======
@@ -96,6 +99,20 @@ def dotx(cmd):
     print "Doing transaction..."
     coin.addBlock(Block(args[0], args[1], args[2], arg[3], args[4]))
 
+def dotx_from_file(cmd):
+    args = cmd.split("dotx ")[-1]
+    f = open("args", newline='')
+    csv_reader = csv.reader(f)
+    csv_reader = next(csv_reader)
+    while (csv_reader != None):
+        uuid = csv_reader[1]
+        email = csv_reader[4]
+        nom = csv_reader[2]
+        prenom = csv_reader[3]
+        image = base64.b64encode(requests.get("https://picsum.photos").content
+        print "Doing transaction..."
+        coin.addBlock(Block(uuid, email, nom, prenom, image))
+
 def allblocks(cmd):
     """
         Method to list all mined blocks.
@@ -122,6 +139,7 @@ def help(cmd):
     """
     print "Commands:"
     print "   dotx <uuid> <email> <nom> <prenom> <image> Create new transaction"
+    print "   dotxfromfile <file> Create new transaction from studen csv"
     print "   allblocks                  Fetch all mined blocks in blockchain"
     print "   getblock <block hash>      Fetch information about particular block"
 

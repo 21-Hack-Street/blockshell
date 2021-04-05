@@ -109,7 +109,7 @@ def dotx_from_file(cmd):
         email = csv_reader[4]
         nom = csv_reader[2]
         prenom = csv_reader[3]
-        image = base64.b64encode(requests.get("https://picsum.photos").content
+        image = base64.b64encode(requests.get("https://picsum.photos").content)
         print "Doing transaction..."
         coin.addBlock(Block(uuid, email, nom, prenom, image))
 

@@ -93,13 +93,16 @@ def dotx(cmd):
         Do Transaction - Method to perform new transaction on blockchain.
     """
     args = cmd.split("dotx ")
-    if (args.len() != 5):
+    if (len(args) != 5):
         print("not or too many args")
         return
     print "Doing transaction..."
     coin.addBlock(Block(args[0], args[1], args[2], arg[3], args[4]))
 
 def dotx_from_file(cmd):
+     """
+        Do Transaction from csv file - Method to perform new transaction on blockchain.
+     """
     args = cmd.split("dotx ")[-1]
     f = open("args", newline='')
     csv_reader = csv.reader(f)

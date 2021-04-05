@@ -105,7 +105,7 @@ def dotx_from_file(cmd):
         Do Transaction from csv file - Method to perform new transaction on blockchain.
     """
     args = cmd.split("dotx_from_file ")[-1]
-    f = open("args", newline='')
+    f = open(args, newline='')
     csv_reader = csv.reader(f)
     csv_reader = next(csv_reader)
     while (csv_reader != None):

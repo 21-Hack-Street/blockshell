@@ -76,7 +76,7 @@ class Blockchain:
         """
             Method create genesis block
         """
-        return Block("Genesis Block")
+        return Block(1, "Genesis Block", "genesis", "block", "image encodé en base64")
 
     def addBlock(self, newBlock):
         """

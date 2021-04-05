@@ -117,7 +117,7 @@ def dotx_from_file(cmd):
                 email = l[4]
                 nom = l[2]
                 prenom = l[3]
-                image = base64.b64encode(requests.get("https://picsum.photos").content)
+                image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
                 print "Doing transaction..."
                 coin.addBlock(Block(uuid, email, nom, prenom, image))
 

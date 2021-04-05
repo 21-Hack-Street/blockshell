@@ -25,6 +25,7 @@ import requests
 # ==================================================
 SUPPORTED_COMMANDS = [
     'dotx',
+    'dotx_from_file',
     'allblocks',
     'getblock',
     'help'
@@ -103,7 +104,7 @@ def dotx_from_file(cmd):
     """
         Do Transaction from csv file - Method to perform new transaction on blockchain.
     """
-    args = cmd.split("dotx ")[-1]
+    args = cmd.split("dotx_from_file ")[-1]
     f = open("args", newline='')
     csv_reader = csv.reader(f)
     csv_reader = next(csv_reader)
@@ -142,7 +143,7 @@ def help(cmd):
     """
     print "Commands:"
     print "   dotx <uuid> <email> <nom> <prenom> <image> Create new transaction"
-    print "   dotxfromfile <file> Create new transaction from studen csv"
+    print "   dotx_from_file <file> Create new transaction from studen csv"
     print "   allblocks                  Fetch all mined blocks in blockchain"
     print "   getblock <block hash>      Fetch information about particular block"
 

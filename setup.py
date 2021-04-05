@@ -12,9 +12,7 @@ setup(
         'Click',
         'colorama',
         'flask',
-        'requests',
-        'csv',
-        'base64'
+        'requests'
     ],
     entry_points='''
         [console_scripts]

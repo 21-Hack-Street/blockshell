@@ -105,17 +105,21 @@ def dotx_from_file(cmd):
         Do Transaction from csv file - Method to perform new transaction on blockchain.
     """
     args = cmd.split("dotx_from_file ")[-1]
-    f = open(args, newline='')
-    csv_reader = csv.reader(f)
-    csv_reader = next(csv_reader)
-    while (csv_reader != None):
-        uuid = csv_reader[1]
-        email = csv_reader[4]
-        nom = csv_reader[2]
-        prenom = csv_reader[3]
-        image = base64.b64encode(requests.get("https://picsum.photos").content)
-        print "Doing transaction..."
-        coin.addBlock(Block(uuid, email, nom, prenom, image))
+    with open(args, 'r') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        header = next(csv_reader)
+        if (header != None):
+            for rows in csv_reader:
+                print(rows[0])
+                l = rows[0].split(';')
+                print(l)
+                uuid = l[1]
+                email = l[4]
+                nom = l[2]
+                prenom = l[3]
+                image = base64.b64encode(requests.get("https://picsum.photos").content)
+                print "Doing transaction..."
+                coin.addBlock(Block(uuid, email, nom, prenom, image))
 
 def allblocks(cmd):
     """

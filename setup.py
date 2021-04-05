@@ -11,7 +11,10 @@ setup(
     install_requires=[
         'Click',
         'colorama',
-        'flask'
+        'flask',
+        'requests',
+        'csv',
+        'base64'
     ],
     entry_points='''
         [console_scripts]

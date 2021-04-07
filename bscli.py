@@ -93,7 +93,10 @@ def dotx(cmd):
     """
         Do Transaction - Method to perform new transaction on blockchain.
     """
-    args = cmd.split("dotx ")
+    args = cmd.split(" ")
+    print(args)
+    args.remove("dotx")
+    print(args)
     if (len(args) > 5):
         print("too many args")
         return
@@ -103,11 +106,11 @@ def dotx(cmd):
     elif (len(args) == 5):
         image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
         print("creating new block that modify entry")
-        coin.addBlock(Block(args[0], args[1], args[2], arg[3], image, args[4]))
+        coin.addBlock(Block(args[0], args[1], args[2], args[3], image, args[4]))
     else:
         image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
         print("creating new block that an entry")
-        coin.addBlock(Block(args[0], args[1], args[2], arg[3], image))
+        coin.addBlock(Block(args[0], args[1], args[2], args[3], image))
 
 def dotx_from_file(cmd):
     """

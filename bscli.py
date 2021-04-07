@@ -105,7 +105,7 @@ def dotx(cmd):
         print("creating new block that modify entry")
         coin.addBlock(Block(args[0], args[1], args[2], arg[3], image, args[4]))
     else:
-        image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content
+        image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
         print("creating new block that an entry")
         coin.addBlock(Block(args[0], args[1], args[2], arg[3], image)
 

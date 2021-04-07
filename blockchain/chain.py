@@ -42,7 +42,7 @@ class Block:
         """
             Method to calculate hash from metadata
         """
-        hashData = str(self.index) + str(self.uuid) + str(self.email) + str(self.nom) + str(self.prenom) + str(self.image) + self.timestamp + self.previousHash + str(self.nonce)
+        hashData = str(self.index) + str(self.image) + self.timestamp + self.previousHash + str(self.nonce)
         return hashlib.sha256(hashData).hexdigest()
 
     def mineBlock(self, difficulty):

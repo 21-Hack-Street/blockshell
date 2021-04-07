@@ -94,11 +94,20 @@ def dotx(cmd):
         Do Transaction - Method to perform new transaction on blockchain.
     """
     args = cmd.split("dotx ")
-    if (len(args) != 5):
-        print("not or too many args")
+    if (len(args) > 5):
+        print("too many args")
         return
-    print "Doing transaction..."
-    coin.addBlock(Block(args[0], args[1], args[2], arg[3], args[4]))
+    elif (len(args) < 4):
+        print("not enought many args")
+        return
+    elif (len(args) == 5):
+        image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
+        print "creating new block that modify entry"
+        coin.addBlock(Block(args[0], args[1], args[2], arg[3], image, args[4]))
+    else:
+        image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content
+        print "creating new block that an entry"
+        coin.addBlock(Block(args[0], args[1], args[2], arg[3], image)
 
 def dotx_from_file(cmd):
     """
@@ -146,8 +155,8 @@ def help(cmd):
         Method to display supported commands in Blockshell
     """
     print "Commands:"
-    print "   dotx <uuid> <email> <nom> <prenom> <image> Create new transaction"
-    print "   dotx_from_file <file> Create new transaction from studen csv"
+    print "   dotx <uuid> <email> <nom> <prenom> <index>(optional) Create new block"
+    print "   dotx_from_file <file> Create new block from studen csv"
     print "   allblocks                  Fetch all mined blocks in blockchain"
     print "   getblock <block hash>      Fetch information about particular block"
 

@@ -5,3 +5,5 @@ build/
 dist/
 blockshell/
 blockshell.egg-info/
+*.csv
+.vscode/

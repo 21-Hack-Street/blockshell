@@ -99,14 +99,12 @@ def dotx(cmd):
     print(args)
     if (len(args) > 5):
         print("too many args")
-        return
     elif (len(args) < 4):
         print("not enought many args")
-        return
     elif (len(args) == 5):
         image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
         print("creating new block that modify entry")
-        coin.addBlock(Block(args[0], args[1], args[2], args[3], image, args[4]))
+        coin.addBlock(Block(args[0], args[1], args[2], args[3], image, int(args[4])))
     else:
         image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
         print("creating new block that an entry")
@@ -119,19 +117,17 @@ def dotx_from_file(cmd):
     args = cmd.split("dotx_from_file ")[-1]
     with open(args, 'r') as csvfile:
         csv_reader = csv.reader(csvfile)
-        header = next(csv_reader)
-        if (header != None):
-            for rows in csv_reader:
-                print(rows[0])
-                l = rows[0].split(';')
-                print(l)
-                uuid = l[1]
-                email = l[4]
-                nom = l[2]
-                prenom = l[3]
-                image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
-                print "Doing transaction..."
-                coin.addBlock(Block(uuid, email, nom, prenom, image))
+        next(csv_reader, None)
+        for rows in csv_reader:
+            l = rows[0].split(';')
+            print(l)
+            uuid = l[1]
+            email = l[4]
+            nom = l[2]
+            prenom = l[3]
+            image = base64.b64encode(requests.get("https://picsum.photos/200/300.jpg").content)
+            print "Doing transaction..."
+            coin.addBlock(Block(uuid, email, nom, prenom, image))
 
 def allblocks(cmd):
     """

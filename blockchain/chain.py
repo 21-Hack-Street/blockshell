@@ -82,7 +82,8 @@ class Blockchain:
         """
             Method to add new block from Block class
         """
-        newBlock.index = len(self.chain)
+        if (newBlock.index == 0):
+            newBlock.index = len(self.chain)
         newBlock.previousHash = self.chain[-1].hash
         newBlock.mineBlock(self.difficulty)
         self.chain.append(newBlock)

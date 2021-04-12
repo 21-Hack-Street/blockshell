@@ -46,6 +46,23 @@ def block(hash):
             #eachBlock['image'] = base64.b64decode(eachBlock['image'])
             return render_template('blockdata.html', data=eachBlock)
 
+@app.route('/annuaire')
+def annuaire():
+    """
+        Endpoint which shows all the data for given block hash.
+    """
+    f = open("chain.txt", "r")
+    data = json.loads(f.read())
+    f.close()
+    dico = {}
+    del data[0]
+    for element in data:
+        if (element['index'] in dico):
+            del dico[element['index']]
+        dico[element['index']] = element
+    dico = [v for k,v in dico.items()]
+    return render_template('annuaire.html', data=dico)
+
 # Run flask app
 if __name__ == '__main__':
     app.run(debug=True)

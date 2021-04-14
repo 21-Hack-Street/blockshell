@@ -43,7 +43,6 @@ def block(hash):
     f.close()
     for eachBlock in data:
         if eachBlock['hash'] == hash:
-            #eachBlock['image'] = base64.b64decode(eachBlock['image'])
             return render_template('blockdata.html', data=eachBlock)
 
 @app.route('/annuaire')
